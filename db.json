@@ -1,0 +1,9 @@
+{
+    "meals": [
+      { "id": 1, "title": "nombre del plato", "description": "descripcion del plato", "author": "typicode" }
+    ],
+    "orders": [
+      { "id": 1, "body": "some comment", "mealsId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
