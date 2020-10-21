@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
-import Button from '../utilities/Button'
+import Button from '../utilities/Button';
+import useFetch from '../hooks/useFetch';
 
 const Meals = ({ navigation }) => {
-  const [ loading, setLoading ] = useState(true);
-  const [ meals, setMeals ] = useState([]);
-
-  const fetchMeals = async () => {
-  const response = await fetch('http://198.168.0.24:3004/meals')
-    const data = await response?.json() || [];
-    setMeals(data)
-    setLoading(false)
-  }
-
-
-  useEffect(()=> {
-    fetchMeals().catch(e => {
-      console.log('rompio', e)
-    });
-  }, [])
-  
-  console.log('esto muestra el consolelog', meals)
-
+  const { loading, data: meals } = useFetch('https://run.mocky.io/v3/b006967f-fa62-4d08-9555-5a1c871a8bd1')
   return( 
   <View style={styles.container}>
     {loading ? <Text>Cargando...</Text> :
