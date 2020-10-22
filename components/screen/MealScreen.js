@@ -4,7 +4,8 @@ import Button from '../utilities/Button';
 import useFetch from '../hooks/useFetch';
 
 const Meals = ({ navigation }) => {
-  const { loading, data: meals } = useFetch('https://run.mocky.io/v3/b006967f-fa62-4d08-9555-5a1c871a8bd1')
+  const { loading, data: meals } = useFetch('http://foodapp.arepasoftware.com/meals')
+  
   return( 
   <View style={styles.container}>
     {loading ? <Text>Cargando...</Text> :
@@ -15,8 +16,8 @@ const Meals = ({ navigation }) => {
       renderItem={({item}) => 
         <Button 
           style={styles.mealsList} 
-          data={item.title} 
-          onPress={()=> navigation.navigate('Modal', {_id: item._id})}/>
+          title={item.title} 
+          onPress={()=> navigation.navigate('Modal', { id: item.id})}/>
       }
     /> }
   </View>
