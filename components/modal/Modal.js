@@ -4,38 +4,46 @@ import useFetch from '../hooks/useFetch';
 import Button from '../utilities/Button';
 
 export default ({ navigation }) => {
-  const id = navigation.getParam('id')  
-  const {loading, data} = useFetch(`http://foodapp.arepasoftware.com/meals/${id}`)
-  
-  if(loading) return (<Text>Cargando...</Text>);
+  const id = navigation.getParam('id')
+  const { loading, data } = useFetch(`http://foodapp.arepasoftware.com/meals/${id}`)
 
-    return( 
-      <>
-    <View style={styles.container}>
-        <Text style={styles.title}>{data.title}</Text>
-        <Text style={styles.author}>{data.author}</Text>
-        <Text style={styles.description}>{data.description}</Text>
-   </View>
-   <View style={styles.buttonContainer}>
-      <Button title={'Aceptar'} onPress={()=> {
-        fetch('http://foodapp.arepasoftware.com/orders',{
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            meal_id: id,
-            user_id: 'pueba'
-          })
-        }).then(()=> {
-          alert('orden generada con exito! :)')
-          navigation.navigate('Meals')
-        })
-      }}/>
-      <Button title={'cancelar'} onPress={()=> navigation.navigate('Meals')}/>
-   </View>
-   </>
-    )
+  return (
+    <>
+      {loading ? 
+        <View style={styles.container}>
+          <Text style={{fontSize: 20}}>Cargando...</Text>
+        </View> 
+        :
+        <View style={styles.container}>
+          <View style={styles.Textcontainer}>
+            <Text style={{fontSize: 30}}>{data.title}</Text>
+            <Text style={{fontSize: 18}}>{data.author}</Text>
+            <Text style={{fontSize: 20}}>{data.description}</Text>
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <Button title={'Aceptar'} 
+              onPress={() => {
+              fetch('http://foodapp.arepasoftware.com/orders', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  meal_id: id,
+                  user_id: 'pueba'
+                })
+              }).then(() => {
+                alert('orden generada con exito! :)')
+                navigation.navigate('Meals')
+              })
+            }}/>
+            <Button title={'cancelar'} 
+              onPress={() => navigation.navigate('Meals')} />
+          </View>
+        </View>}
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -46,25 +54,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  title: {
+  Textcontainer: {
+    flex: 1,
     fontSize: 20,
-  },
-
-  description: {
-    alignSelf: 'center',
-    fontSize: 18,
-  },
-
-  author: {
-    alignSelf: 'center',
-    fontSize: 14,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   buttonContainer: {
     flex: 0.10,
     backgroundColor: "#fff",
+    width: "100%",
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   },
 })

@@ -5,22 +5,22 @@ import useFetch from '../hooks/useFetch';
 
 const Meals = ({ navigation }) => {
   const { loading, data: meals } = useFetch('http://foodapp.arepasoftware.com/meals')
-  
-  return( 
-  <View style={styles.container}>
-    {loading ? <Text>Cargando...</Text> :
-    <FlatList
-      style={styles.list}
-      data={meals}
-      keyExtractor={x => x.id}
-      renderItem={({item}) => 
-        <Button 
-          style={styles.mealsList} 
-          title={item.title} 
-          onPress={()=> navigation.navigate('Modal', { id: item.id})}/>
-      }
-    /> }
-  </View>
+
+  return (
+    <View style={styles.container}>
+      {loading ? <Text>Cargando...</Text> :
+        <FlatList
+          style={styles.list}
+          data={meals}
+          keyExtractor={x => x.id}
+          renderItem={({ item }) =>
+            <Button
+              style={styles.mealsList}
+              title={item.title}
+              onPress={() => navigation.navigate('Modal', { id: item.id })} />
+          }
+        />}
+    </View>
   )
 }
 
