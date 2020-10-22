@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 export default ({...props}) => {
     return (
         <TouchableOpacity style={props.style} onPress={props.onPress}>
-          <Text style={styles.text}>{props.data}</Text>
+          <Text style={styles.text}>{props.title}</Text>
         </TouchableOpacity>
     )
 } 

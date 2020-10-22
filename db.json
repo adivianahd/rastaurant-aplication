@@ -1,12 +1,40 @@
 {
-    "meals": [
-      { "id": 1, "title": "Hambuerguesa de pollo", "description": "pan integral, pollo, palta, lechuga, tomate y salsas", "author": "astrid" },
-      { "id": 2, "title": "pato a la naranja", "description": "pato horneado con rodajas de naranja en conserva dulce de naranja", "author": "erick" },
-      { "id": 3, "title": "carne al grill", "description": "bife de carne a la plancha acompañado de una ensalada de verduras varias", "author": "abram" },
-      { "id": 4, "title": "sopa de arvejas", "description": "sopa de arvejas receta de la abuelita del campo", "author": "jose" }
-    ],
-    "orders": [
-      { "id": 1, "body": "some comment", "mealsId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "meals": [
+    {
+      "id": 1,
+      "title": "Hambuerguesa de pollo",
+      "description": "pan integral, pollo, palta, lechuga, tomate y salsas",
+      "author": "astrid"
+    },
+    {
+      "id": 2,
+      "title": "pato a la naranja",
+      "description": "pato horneado con rodajas de naranja en conserva dulce de naranja",
+      "author": "erick"
+    },
+    {
+      "id": 3,
+      "title": "carne al grill",
+      "description": "bife de carne a la plancha acompañado de una ensalada de verduras varias",
+      "author": "abram"
+    },
+    {
+      "id": 4,
+      "title": "sopa de arvejas",
+      "description": "sopa de arvejas receta de la abuelita del campo",
+      "author": "jose"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "mealsId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode"
+    }
+  ]
+}
